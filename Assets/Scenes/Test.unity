@@ -540,6 +540,7 @@ GameObject:
   - component: {fileID: 920947267}
   - component: {fileID: 920947266}
   - component: {fileID: 920947265}
+  - component: {fileID: 920947270}
   m_Layer: 0
   m_Name: Press_Left
   m_TagString: Untagged
@@ -555,7 +556,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920947264}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -570,9 +571,9 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 124
   m_CollisionDetection: 0
 --- !u!65 &920947266
 BoxCollider:
@@ -663,6 +664,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 365406409}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &920947270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920947264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec1189ae3bbb64d5688c55d922e2d56b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceNewtons: 5
+  direction: {x: 1, y: 0, z: 0}
+  useLocalSpace: 1
+  forceMode: 0
+  applyContinuously: 1
+  applyOnStartOnce: 0
 --- !u!1 &1123555281
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,7 +821,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1249777905}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -858,7 +877,7 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
-  m_MassScale: 1
+  m_MassScale: 0.2
   m_ConnectedMassScale: 1
 --- !u!1 &1463804115
 GameObject:
