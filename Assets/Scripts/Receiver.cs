@@ -10,7 +10,8 @@ public class Receiver : MonoBehaviour
     public int listenPort = 3333;
 
     [Header("Data")]
-    public float forceN = 0f;
+    public float force_L_N = 0f;
+    public float force_R_N = 0f;
     public bool connected = false;
 
     UdpClient _udp;
@@ -39,12 +40,12 @@ public class Receiver : MonoBehaviour
                 if (data == null || data.Length < 8) continue;
 
                 // Check header 'F','S','R','1'
-                if (data[0] == (byte)'F' && data[1] == (byte)'S' &&
-                    data[2] == (byte)'R' && data[3] == (byte)'1')
+                if (data.Length >= 12 && data[0]=='F' && data[1]=='S' && data[2]=='R' && data[3]=='2')
                 {
-                    float f = BitConverter.ToSingle(data, 4);
-                    forceN = f;
-                    Debug.Log("Force: " + forceN);
+                    float f_l = BitConverter.ToSingle(data, 4);
+                    float f_r = BitConverter.ToSingle(data, 8);
+                    force_L_N = f_l;
+                    force_R_N = f_r;
                     connected = true;
                 }
             }

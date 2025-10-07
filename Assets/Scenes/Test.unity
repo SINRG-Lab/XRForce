@@ -132,7 +132,6 @@ GameObject:
   - component: {fileID: 230079795}
   - component: {fileID: 230079794}
   - component: {fileID: 230079793}
-  - component: {fileID: 230079798}
   m_Layer: 0
   m_Name: Press_Right
   m_TagString: Untagged
@@ -148,7 +147,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 230079792}
   serializedVersion: 5
-  m_Mass: 10
+  m_Mass: 0.3
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -166,7 +165,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 124
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!65 &230079794
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -259,24 +258,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 365406409}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &230079798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 230079792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec1189ae3bbb64d5688c55d922e2d56b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forceNewtons: 1
-  direction: {x: -1, y: 0, z: 0}
-  useLocalSpace: 1
-  forceMode: 0
-  applyContinuously: 1
-  applyOnStartOnce: 0
 --- !u!1 &365406408
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,8 +371,8 @@ HingeJoint:
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   m_UseSpring: 1
   m_Spring:
-    spring: 600
-    damper: 30
+    spring: 800
+    damper: 100
     targetPosition: 5
   m_UseMotor: 0
   m_Motor:
@@ -402,16 +383,16 @@ HingeJoint:
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
-    min: -7
-    max: 7
+    min: -5
+    max: 5
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_EnableCollision: 1
+  m_EnableCollision: 0
   m_EnablePreprocessing: 1
-  m_MassScale: 0.2
+  m_MassScale: 0.35
   m_ConnectedMassScale: 1
 --- !u!54 &550095002
 Rigidbody:
@@ -421,7 +402,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 550094999}
   serializedVersion: 5
-  m_Mass: 0.03
+  m_Mass: 0.5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -435,7 +416,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -590,7 +571,6 @@ GameObject:
   - component: {fileID: 920947267}
   - component: {fileID: 920947266}
   - component: {fileID: 920947265}
-  - component: {fileID: 920947270}
   m_Layer: 0
   m_Name: Press_Left
   m_TagString: Untagged
@@ -717,24 +697,60 @@ Transform:
   m_Children: []
   m_Father: {fileID: 365406409}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &920947270
+--- !u!1 &1042566394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1042566396}
+  - component: {fileID: 1042566395}
+  m_Layer: 0
+  m_Name: ApplyForce
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1042566395
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920947264}
+  m_GameObject: {fileID: 1042566394}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec1189ae3bbb64d5688c55d922e2d56b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  forceNewtons: 0
+  m_EditorClassIdentifier: Assembly-CSharp::ApplyForce
+  forceNewtons_L: 0
+  forceNewtons_R: 0
+  pusher_Left: {fileID: 920947265}
+  pusher_Right: {fileID: 230079793}
   direction: {x: 1, y: 0, z: 0}
   useLocalSpace: 1
   forceMode: 0
   applyContinuously: 1
   applyOnStartOnce: 0
+  receiver: {fileID: 1589272406}
+--- !u!4 &1042566396
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042566394}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.07285, y: 0, z: 1.15165}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1123555281
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,14 +925,14 @@ HingeJoint:
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   m_UseSpring: 1
   m_Spring:
-    spring: 1000
-    damper: 500
+    spring: 800
+    damper: 100
     targetPosition: -5
   m_UseMotor: 0
   m_Motor:
     targetVelocity: 0
     force: 0
-    freeSpin: 1
+    freeSpin: 0
   m_UseLimits: 1
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
@@ -930,7 +946,7 @@ HingeJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
-  m_MassScale: 0.7
+  m_MassScale: 0.35
   m_ConnectedMassScale: 1
 --- !u!1 &1463804115
 GameObject:
@@ -1212,7 +1228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Receiver
   listenPort: 3333
-  forceN: 0
+  force_L_N: 0
+  force_R_N: 0
   connected: 0
 --- !u!4 &1589272407
 Transform:
@@ -1489,3 +1506,4 @@ SceneRoots:
   - {fileID: 1536311121}
   - {fileID: 2006886416}
   - {fileID: 1589272407}
+  - {fileID: 1042566396}
