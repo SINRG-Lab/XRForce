@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 550095002}
   - component: {fileID: 550095001}
   m_Layer: 0
-  m_Name: Pivot_right
+  m_Name: Pivot_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -860,7 +860,7 @@ GameObject:
   - component: {fileID: 1249777908}
   - component: {fileID: 1249777909}
   m_Layer: 0
-  m_Name: Pivot_left
+  m_Name: Pivot_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
