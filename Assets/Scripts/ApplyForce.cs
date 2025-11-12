@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class ApplyForce : MonoBehaviour
 {
@@ -6,6 +7,10 @@ public class ApplyForce : MonoBehaviour
     [Tooltip("Force magnitude in Newtons.")]
     public float forceNewtons_L = 0f;
     public float forceNewtons_R = 0f;
+
+    [Header("Displays")]
+    public TextMeshProUGUI force_value_text_left;
+    public TextMeshProUGUI force_value_text_right;
 
     [Header("Pushers")]
     public Rigidbody pusher_Left;
@@ -52,6 +57,9 @@ public class ApplyForce : MonoBehaviour
 
         pusher_Left.AddForce(f_l, forceMode);
         pusher_Right.AddForce(f_r, forceMode);
+
+        force_value_text_left.text = forceNewtons_L.ToString();
+        force_value_text_right.text = forceNewtons_R.ToString();
     }
 
     /// Call this from other scripts to give a single shove.
