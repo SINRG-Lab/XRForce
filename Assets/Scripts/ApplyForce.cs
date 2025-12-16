@@ -58,8 +58,8 @@ public class ApplyForce : MonoBehaviour
         pusher_Left.AddForce(f_l, forceMode);
         pusher_Right.AddForce(f_r, forceMode);
 
-        force_value_text_left.text = forceNewtons_L.ToString();
-        force_value_text_right.text = forceNewtons_R.ToString();
+        force_value_text_left.text = forceNewtons_L.ToString("F2");
+        force_value_text_right.text = forceNewtons_R.ToString("F2");
     }
 
     /// Call this from other scripts to give a single shove.

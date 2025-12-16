@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Anchor
   - Tweezer
+  - QDSUIBackplateGradient
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Overlay UI
   - Water
   - UI
   - Tweezer
