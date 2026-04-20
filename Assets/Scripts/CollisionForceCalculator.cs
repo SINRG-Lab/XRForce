@@ -1,21 +1,37 @@
 using UnityEngine;
+using System;
 
 public class CollisionForceCalculator : MonoBehaviour
 {
-    [SerializeField] private GameObject wafer_broken;
-    bool objectDestroyed = false;
+    [SerializeField] private GameObject waferBrokenPrefab;
+    [SerializeField] private float breakSpeedThreshold = 1.0f;
+    [SerializeField] private bool logCollisionsInDevelopment = false;
+    public event Action<GameObject> OnBroken;
+    bool _broken = false;
 
     void OnCollisionEnter(Collision c)
     {
-        float hitSpeed = c.relativeVelocity.magnitude; // m/s
-        Debug.Log($"Hit speed: {hitSpeed:F2} m/s");
+        if (_broken) return;
 
-        if (hitSpeed > 1.0f && !objectDestroyed)
+        float hitSpeed = c.relativeVelocity.magnitude; // m/s
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        if (logCollisionsInDevelopment)
+            Debug.Log($"Hit speed: {hitSpeed:F2} m/s");
+#endif
+
+        if (hitSpeed >= breakSpeedThreshold)
         {
-            
+            _broken = true;
+
+            GameObject broken = null;
+            if (waferBrokenPrefab != null)
+            {
+                broken = Instantiate(waferBrokenPrefab, transform.position, transform.rotation);
+            }
+            OnBroken?.Invoke(broken);
+
             Destroy(gameObject);
-            Instantiate(wafer_broken, transform.position, transform.rotation);
-            objectDestroyed = true;
         }
     }
 }

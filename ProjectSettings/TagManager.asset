@@ -7,6 +7,22 @@ TagManager:
   - Anchor
   - Tweezer
   - QDSUIBackplateGradient
+  - Wafer
+  - QDSUIToggleButton
+  - QDSUIToggleSwitch
+  - QDSUITooltip
+  - QDSUISharedThemeColor
+  - QDSUIAccentColor
+  - QDSUIBorderlessButton
+  - QDSUISecondaryButton
+  - QDSUIToggleBorderlessButton
+  - QDSUIIcon
+  - QDSUITextSecondaryColor
+  - QDSUIPrimaryButton
+  - QDSUITextInvertedColor
+  - QDSUITextSecondaryInvertedColor
+  - Mid
+  - CountdownText
   layers:
   - Default
   - TransparentFX
@@ -16,8 +32,8 @@ TagManager:
   - UI
   - Tweezer
   - Object
-  - 
-  - 
+  - Wafer
+  - Dust
   - 
   - 
   - 
