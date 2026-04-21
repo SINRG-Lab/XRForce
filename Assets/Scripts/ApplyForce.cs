@@ -18,6 +18,8 @@ public class ApplyForce : MonoBehaviour
     [Header("Pushers")]
     public Rigidbody pusher_Left;
     public Rigidbody pusher_Right;
+    [Tooltip("Optional transform that defines the local direction space. If empty, the script uses the pushers' shared parent when possible.")]
+    public Transform directionReference;
 
     [Tooltip("Direction to push. Will be normalized.")]
     public Vector3 direction = Vector3.forward;
@@ -32,10 +34,12 @@ public class ApplyForce : MonoBehaviour
 
     [Header("Input")]
     public ReceiverLatest receiver;   // uses heatmapA & heatmapB
+    public bool useAdvancedProcessing = true;
 
     [Header("Sensor Mapping")]
     public HeatmapSource leftSource = HeatmapSource.HeatmapB;
     public HeatmapSource rightSource = HeatmapSource.HeatmapB;
+    public bool useWeightedForce = true;
     [Min(1f)] public float weightedForcePower = 2.0f;
 
     [Header("Calibration")]
@@ -79,7 +83,7 @@ public class ApplyForce : MonoBehaviour
         if (pusher_Right != null)
             _rightStartLocalPosition = GetReferenceLocalPosition(pusher_Right);
 
-        if (calibrateOnStart)
+        if (useAdvancedProcessing && calibrateOnStart)
             BeginCalibration();
     }
 
@@ -92,6 +96,17 @@ public class ApplyForce : MonoBehaviour
 
         float rawLeft = ReadWeightedForce(leftSource);
         float rawRight = ReadWeightedForce(rightSource);
+
+        if (!useAdvancedProcessing)
+        {
+            forceNewtons_L = rawLeft;
+            forceNewtons_R = rawRight;
+
+            Vector3 rawDir = GetDir();
+            ApplyForces(rawDir * forceNewtons_L, -rawDir * forceNewtons_R);
+            UpdateUI();
+            return;
+        }
 
         if (_isCalibrating)
         {
@@ -147,6 +162,9 @@ public class ApplyForce : MonoBehaviour
 
     public void BeginCalibration()
     {
+        if (!useAdvancedProcessing)
+            return;
+
         _isCalibrating = true;
         _calibrationTimer = 0f;
         _baselineSumLeft = 0f;
@@ -183,7 +201,9 @@ public class ApplyForce : MonoBehaviour
     float ReadWeightedForce(HeatmapSource source)
     {
         float[] values = source == HeatmapSource.HeatmapA ? receiver.heatmapA : receiver.heatmapB;
-        return WeightedForce(values, weightedForcePower);
+        return useWeightedForce
+            ? WeightedForce(values, weightedForcePower)
+            : AverageForce(values);
     }
 
     float WeightedForce(float[] values, float power = 2.0f)
@@ -203,6 +223,22 @@ public class ApplyForce : MonoBehaviour
         }
 
         return den > 0f ? num / den : 0f;
+    }
+
+    float AverageForce(float[] values)
+    {
+        if (values == null || values.Length == 0) return 0f;
+
+        float sum = 0f;
+        int count = 0;
+
+        for (int i = 0; i < values.Length; i++)
+        {
+            sum += Mathf.Max(0f, values[i]);
+            count++;
+        }
+
+        return count > 0 ? sum / count : 0f;
     }
 
     bool UpdateActiveState(bool isActive, float value)
@@ -264,6 +300,33 @@ public class ApplyForce : MonoBehaviour
             ? direction.normalized
             : Vector3.forward;
 
-        return useLocalSpace ? transform.TransformDirection(d) : d;
+        if (!useLocalSpace)
+            return d;
+
+        Transform reference = GetDirectionReference();
+        return reference != null ? reference.TransformDirection(d) : transform.TransformDirection(d);
+    }
+
+    Transform GetDirectionReference()
+    {
+        if (directionReference != null)
+            return directionReference;
+
+        if (pusher_Left != null && pusher_Right != null)
+        {
+            Transform leftParent = pusher_Left.transform.parent;
+            Transform rightParent = pusher_Right.transform.parent;
+
+            if (leftParent != null && leftParent == rightParent)
+                return leftParent;
+        }
+
+        if (pusher_Left != null && pusher_Left.transform.parent != null)
+            return pusher_Left.transform.parent;
+
+        if (pusher_Right != null && pusher_Right.transform.parent != null)
+            return pusher_Right.transform.parent;
+
+        return null;
     }
 }

@@ -4374,6 +4374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CollisionForceCalculator
   waferBrokenPrefab: {fileID: 128964475654904768, guid: 4d1ead37ffb5e4fd6aad9478ec169c4c, type: 3}
   breakSpeedThreshold: 0.7
+  logCollisionsInDevelopment: 0
 --- !u!114 &-3301474454179828705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4405,6 +4406,16 @@ MonoBehaviour:
   rightTip: {fileID: 0}
   leftTip: {fileID: 0}
   tipsAreTriggers: 0
+  autoResolveReferences: 1
+  targetParentName: Tweezers
+  leftTipName: Stopper_Left
+  rightTipName: Stopper_Right
+  logAutoResolveFailures: 0
+  usePinchValidation: 1
+  oppositeSideDotThreshold: 0.35
+  centerlineToleranceMultiplier: 20
+  centerBetweenTipsAllowanceMultiplier: 10
+  maxTipGapMultiplier: 5
   targetParent: {fileID: 0}
   keepWorldPoseOnParent: 1
   keepWorldPoseOnUnparent: 1
