@@ -1,0 +1,13 @@
+{
+  "autodeskProduct": "Fusion360",
+  "type": "script",
+  "author": "XRForce",
+  "description": {
+    "": "Elastic fingertip cot for mounting a 3x3 flexible pressure sensor inside the sleeve."
+  },
+  "supportedOS": "windows|mac",
+  "editEnabled": true,
+  "id": "fingertip_pressure_sensor_cot",
+  "version": "1.0.0",
+  "runOnStartup": false
+}
