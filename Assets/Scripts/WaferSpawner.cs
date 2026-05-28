@@ -45,6 +45,7 @@ public class WaferSpawner : MonoBehaviour
 
         GameObject wafer = Instantiate(waferPrefab, spawnPoint.position, spawnPoint.rotation);
         ConfigureSpawnedWafer(wafer);
+        TransferMetricsLogger.RecordWaferSpawned();
         spawnCount++;
 
         // var morph = wafer.GetComponent<WaferMaterialMorph>();
@@ -103,6 +104,8 @@ public class WaferSpawner : MonoBehaviour
 
     void HandleWaferBroken(GameObject brokenInstance)
     {
+        TransferMetricsLogger.RecordWaferBroken();
+
         if (brokenInstance != null)
         {
             Destroy(brokenInstance, brokenCleanupDelay);

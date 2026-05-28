@@ -78,6 +78,9 @@ namespace PassthroughCameraSamples.MultiObjectDetection
             if (!m_isWritting)
             {
                 m_isWritting = true;
+                if (global::TaskInstructionTextRuntime.TryGetBodyForActiveScene(out string instructionBody))
+                    m_labelInfo.text = instructionBody;
+
                 m_currentInfo = m_labelInfo.text;
                 m_labelInfo.text = "";
                 OnStartWritting?.Invoke();

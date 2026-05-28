@@ -28,6 +28,7 @@ public class Detect_Wafer : MonoBehaviour
     IEnumerator HandleWafer(GameObject wafer)
     {
         _count++;
+        TransferMetricsLogger.RecordWaferAccepted(_count);
         Debug.Log($"Wafer count: {_count}/{targetCount}");
 
         var rb = wafer.GetComponent<Rigidbody>();
@@ -52,6 +53,7 @@ public class Detect_Wafer : MonoBehaviour
     {
         _count = 0;
         _isProcessing = false;
+        TransferMetricsLogger.ResetTaskProgress();
     }
 
 }
