@@ -5,6 +5,7 @@ public class TempAirBlower : MonoBehaviour
 {
     [Header("Activation")]
     public bool blowContinuously = false;
+    public bool blowOnce;
     public KeyCode holdKey = KeyCode.C;
     public bool editorOnly = true;
 
@@ -33,16 +34,32 @@ public class TempAirBlower : MonoBehaviour
         if (editorOnly && !Application.isEditor)
             return;
 
-        if (!blowContinuously && !Input.GetKey(holdKey))
+        bool shouldBlow = blowContinuously || blowOnce || IsHoldKeyPressed();
+        if (!shouldBlow)
             return;
 
         ApplyAir(1f);
+        blowOnce = false;
     }
 
     [ContextMenu("Blow Once")]
     public void BlowOnce()
     {
         ApplyAir(1f);
+    }
+
+    bool IsHoldKeyPressed()
+    {
+#if ENABLE_INPUT_SYSTEM
+        if (UnityEngine.InputSystem.Keyboard.current != null)
+            return UnityEngine.InputSystem.Keyboard.current.cKey.isPressed;
+#endif
+
+#if ENABLE_LEGACY_INPUT_MANAGER
+        return Input.GetKey(holdKey);
+#else
+        return false;
+#endif
     }
 
     void ApplyAir(float strength01)

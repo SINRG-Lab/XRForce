@@ -15281,6 +15281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TempAirBlower
   blowContinuously: 1
+  blowOnce: 0
   holdKey: 99
   editorOnly: 1
   nozzle: {fileID: 1217770790}
