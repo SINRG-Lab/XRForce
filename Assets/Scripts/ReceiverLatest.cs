@@ -25,6 +25,7 @@ public class ReceiverLatest : MonoBehaviour
     public string lastHeader = "";   // e.g., "FSR(18)"
     public string lastSender = "";
     public float lastPacketAgeSec = 999f;
+    public uint packetSequence = 0;
 
     UdpClient _udp;
     Thread _thread;
@@ -72,6 +73,7 @@ public class ReceiverLatest : MonoBehaviour
                 channelCount = _latestChannelCount;
                 Array.Copy(_latestHeatA, heatmapA, 9);
                 Array.Copy(_latestHeatB, heatmapB, 9);
+                packetSequence++;
                 _hasNew = false;
             }
         }

@@ -2858,7 +2858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5eea8e4ccaa40c689ad34c4bc13cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PressureCsvLogger
-  receiver: {fileID: 0}
+  receiver: {fileID: 1442004004}
   folderName: PressureLogs
   fileName: pressure_log.csv
   logOnlyWhenConnected: 1
