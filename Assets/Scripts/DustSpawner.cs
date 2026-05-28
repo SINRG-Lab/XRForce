@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [DisallowMultipleComponent]
 public class DustSpawner : MonoBehaviour
@@ -17,8 +18,16 @@ public class DustSpawner : MonoBehaviour
     public Transform parentOverride;
 
     [Header("Spawn Options")]
+    public bool spawnOnStart = true;
     public bool alignToNormal = true;
     public bool randomYaw = true;
+    public bool clearExistingOnSpawn = true;
+
+    [Header("Clean State")]
+    [Min(0)] public int cleanThreshold = 0;
+    public int ActiveDustCount => _activeDustCount;
+    public bool IsClean => _activeDustCount <= cleanThreshold;
+    public int LastSpawnedCount => _lastSpawnedCount;
 
     Mesh _mesh;
     Vector3[] _verts;
@@ -26,8 +35,41 @@ public class DustSpawner : MonoBehaviour
     Vector3[] _normals;
     float[] _cdf; // cumulative distribution of triangle areas
     float _totalArea;
+    int _activeDustCount;
+    int _lastSpawnedCount;
+    bool _meshReady;
+    readonly List<DustStick> _spawnedDust = new List<DustStick>();
 
     void Awake()
+    {
+        CacheMesh();
+    }
+
+    void Start()
+    {
+        if (spawnOnStart)
+            Spawn();
+    }
+
+    public void ConfigureAndSpawn(
+        GameObject prefab,
+        int dustCount,
+        Vector2 randomScaleRange,
+        float offset,
+        int cleanDustThreshold,
+        Transform parent)
+    {
+        dustPrefab = prefab;
+        count = dustCount;
+        scaleRange = randomScaleRange;
+        surfaceOffset = offset;
+        cleanThreshold = cleanDustThreshold;
+        parentOverride = parent;
+        spawnOnStart = false;
+        Spawn();
+    }
+
+    void CacheMesh()
     {
         var mf = GetComponentInChildren<MeshFilter>();
         if (mf == null || mf.sharedMesh == null)
@@ -43,22 +85,27 @@ public class DustSpawner : MonoBehaviour
         _normals = _mesh.normals;
 
         BuildTriangleAreaCDF();
-    }
-
-    void Start()
-    {
-        if (dustPrefab == null)
-        {
-            Debug.LogError($"[{nameof(DustSpawner)}] Dust Prefab is not assigned.");
-            return;
-        }
-
-        Spawn();
+        _meshReady = true;
     }
 
     [ContextMenu("Spawn Dust Now")]
     public void Spawn()
     {
+        if (!_meshReady)
+            CacheMesh();
+
+        if (!_meshReady)
+            return;
+
+        if (dustPrefab == null)
+        {
+            Debug.LogError($"[{nameof(DustSpawner)}] Dust Prefab is not assigned.", this);
+            return;
+        }
+
+        if (clearExistingOnSpawn)
+            ClearDust();
+
         Transform parent = parentOverride != null ? parentOverride : transform;
 
         for (int i = 0; i < count; i++)
@@ -88,7 +135,43 @@ public class DustSpawner : MonoBehaviour
 
             float s = Random.Range(scaleRange.x, scaleRange.y);
             go.transform.localScale = go.transform.localScale * s;
+
+            var dustStick = go.GetComponent<DustStick>();
+            if (dustStick == null)
+                dustStick = go.AddComponent<DustStick>();
+
+            foreach (var col in go.GetComponentsInChildren<Collider>())
+                col.isTrigger = true;
+
+            dustStick.Initialize(transform, this);
+            _spawnedDust.Add(dustStick);
         }
+
+        _activeDustCount = _spawnedDust.Count;
+        _lastSpawnedCount = _activeDustCount;
+
+        Debug.Log($"[{nameof(DustSpawner)}] Spawned {_lastSpawnedCount} dust particles under {parent.name}.", this);
+    }
+
+    public void NotifyDustRemoved(DustStick dust)
+    {
+        if (dust != null)
+            _spawnedDust.Remove(dust);
+
+        _activeDustCount = Mathf.Max(0, _activeDustCount - 1);
+    }
+
+    [ContextMenu("Clear Dust")]
+    public void ClearDust()
+    {
+        for (int i = _spawnedDust.Count - 1; i >= 0; i--)
+        {
+            if (_spawnedDust[i] != null)
+                Destroy(_spawnedDust[i].gameObject);
+        }
+
+        _spawnedDust.Clear();
+        _activeDustCount = 0;
     }
 
     void BuildTriangleAreaCDF()

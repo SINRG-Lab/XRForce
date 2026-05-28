@@ -13550,6 +13550,13 @@ MonoBehaviour:
   autoResolveTweezers: 1
   spawnDelay: 2
   brokenCleanupDelay: 1.5
+  spawnDirtOnWafer: 1
+  dustPrefab: {fileID: 6013220535837305232, guid: 1f5a90475d6d24e1a9310cacec02ab02, type: 3}
+  dustCount: 80
+  dustScaleRange: {x: 3, y: 6}
+  dustSurfaceOffset: 0.0005
+  cleanThreshold: 0
+  requireCleanBeforeAccept: 1
 --- !u!4 &1509456545
 Transform:
   m_ObjectHideFlags: 0
@@ -14962,6 +14969,7 @@ GameObject:
   - component: {fileID: 2108151663}
   - component: {fileID: 2108151662}
   - component: {fileID: 2108151661}
+  - component: {fileID: 2108151665}
   - component: {fileID: 2108151660}
   m_Layer: 4
   m_Name: SprayBottle
@@ -15170,12 +15178,12 @@ MonoBehaviour:
     m_RotationOrder: 4
   _affectedLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   _maxDistance: 2
   _coneAngle: 25
   _maxForce: 3
   _lift: 0
-  _maxHits: 24
+  _maxHits: 128
   _forceMode: 0
   _airVFX: {fileID: 2139905164}
   _airSFX: {fileID: 1990907989}
@@ -15260,6 +15268,31 @@ Transform:
   - {fileID: 1990907990}
   m_Father: {fileID: 143222018}
   m_LocalEulerAnglesHint: {x: 0.652, y: 158.87, z: -0.252}
+--- !u!114 &2108151665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108151659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d16008ad804529af1e39147e6bf5da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TempAirBlower
+  blowContinuously: 1
+  holdKey: 99
+  editorOnly: 1
+  nozzle: {fileID: 1217770790}
+  affectedLayers:
+    serializedVersion: 2
+    m_Bits: 768
+  maxDistance: 2
+  coneAngle: 25
+  maxForce: 3
+  lift: 0
+  maxHits: 128
+  forceMode: 0
 --- !u!1 &2118500520
 GameObject:
   m_ObjectHideFlags: 0

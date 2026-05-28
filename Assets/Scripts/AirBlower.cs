@@ -141,10 +141,13 @@ namespace Oculus.Interaction.Demo
             Vector3 origin = _nozzle.position;
             Vector3 fwd = _nozzle.forward;
 
-            // Broadphase: grab nearby colliders (sphere is fine; we’ll filter to a cone)
-            float maxRadiusAtEnd = Mathf.Tan(Mathf.Deg2Rad * _coneAngle * 0.5f) * _maxDistance;
+            // Broadphase: grab nearby colliders, then filter to the actual cone below.
             int count = Physics.OverlapSphereNonAlloc(
-                origin, maxRadiusAtEnd, _hits, _affectedLayers, QueryTriggerInteraction.Ignore);
+                origin + fwd * (_maxDistance * 0.5f),
+                _maxDistance,
+                _hits,
+                _affectedLayers,
+                QueryTriggerInteraction.Collide);
 
             float forceBase = _maxForce * Mathf.Clamp01(strength01);
 
@@ -152,6 +155,23 @@ namespace Oculus.Interaction.Demo
             {
                 Collider col = _hits[i];
                 if (!col) continue;
+
+                if (IsInAirCone(col.bounds.center, origin, fwd))
+                {
+                    var dust = col.GetComponentInParent<DustStick>();
+                    if (dust != null)
+                    {
+                        dust.Clean();
+                        continue;
+                    }
+
+                    var dustSpawner = col.GetComponentInParent<DustSpawner>();
+                    if (dustSpawner != null && dustSpawner.ActiveDustCount > 0)
+                    {
+                        dustSpawner.ClearDust();
+                        continue;
+                    }
+                }
 
                 Rigidbody rb = col.attachedRigidbody;
                 if (rb == null || rb.isKinematic) continue;
@@ -184,6 +204,20 @@ namespace Oculus.Interaction.Demo
 
                 rb.AddForce(dir * (forceBase * distanceFade), _forceMode);
             }
+        }
+
+        private bool IsInAirCone(Vector3 point, Vector3 origin, Vector3 forward)
+        {
+            Vector3 to = point - origin;
+            float forwardDist = Vector3.Dot(to, forward);
+
+            if (forwardDist <= 0f || forwardDist > _maxDistance)
+                return false;
+
+            Vector3 lateral = to - forward * forwardDist;
+            float allowedRadius = Mathf.Tan(Mathf.Deg2Rad * _coneAngle * 0.5f) * forwardDist;
+
+            return lateral.magnitude <= allowedRadius;
         }
     }
 }

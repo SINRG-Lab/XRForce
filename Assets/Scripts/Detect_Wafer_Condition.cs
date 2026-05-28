@@ -11,10 +11,14 @@ public class Detect_Wafer_Condition : MonoBehaviour
     public string requiredTag = "StartObject";     // must be inside trigger with this
     public string forbiddenTag = "BlockObject";    // must NOT be inside trigger with this
 
+    [Header("Cleanliness")]
+    public bool requireCleanWafer = false;
+
     [Header("UI (runtime find)")]
     public string countdownTextTag = "CountdownText"; // Tag your TMP text object with this
 
     TMP_Text countdownText;
+    DustSpawner dustSpawner;
 
     int requiredCount = 0;
     int forbiddenCount = 0;
@@ -23,9 +27,21 @@ public class Detect_Wafer_Condition : MonoBehaviour
 
     void Awake()
     {
+        dustSpawner = GetComponent<DustSpawner>();
         var textObj = GameObject.FindGameObjectWithTag(countdownTextTag);
         if (textObj != null) countdownText = textObj.GetComponent<TMP_Text>();
         UpdateText(0f);
+    }
+
+    void Update()
+    {
+        if (requiredCount <= 0 && forbiddenCount <= 0)
+            return;
+
+        if (ConditionValid())
+            TryStartCountdown();
+        else
+            StopCountdownIfRunning();
     }
 
     void OnTriggerEnter(Collider other)
@@ -44,7 +60,19 @@ public class Detect_Wafer_Condition : MonoBehaviour
         StopCountdownIfRunning(); // reset when condition breaks
     }
 
-    bool ConditionValid() => requiredCount > 0 && forbiddenCount == 0;
+    bool ConditionValid()
+    {
+        if (requiredCount <= 0 || forbiddenCount > 0)
+            return false;
+
+        if (!requireCleanWafer)
+            return true;
+
+        if (dustSpawner == null)
+            dustSpawner = GetComponent<DustSpawner>();
+
+        return dustSpawner == null || dustSpawner.IsClean;
+    }
 
     void TryStartCountdown()
     {
