@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1800" height="1200" viewBox="0 0 1800 1200">
+  <defs>
+    <style>
+      .panel { fill: #ffffff; stroke: #d5dbe3; stroke-width: 2; }
+      .panel-title { font: 700 26px Arial, Helvetica, sans-serif; fill: #111827; }
+      .label { font: 600 18px Arial, Helvetica, sans-serif; fill: #111827; }
+      .small { font: 500 15px Arial, Helvetica, sans-serif; fill: #475569; }
+      .tiny { font: 600 13px Arial, Helvetica, sans-serif; fill: #475569; letter-spacing: .3px; }
+      .caption { font: 700 31px Arial, Helvetica, sans-serif; fill: #111827; }
+      .panel-letter { font: 700 30px Arial, Helvetica, sans-serif; fill: #111827; }
+      .callout { fill: none; stroke: #334155; stroke-width: 2; }
+      .flow { fill: none; stroke: #64748b; stroke-width: 5; stroke-linecap: round; }
+      .cyan-stroke { fill: none; stroke: #069dbd; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .icon { fill: none; stroke: #334155; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.13"/>
+    </filter>
+    <clipPath id="clipDorsal"><rect x="78" y="138" width="328" height="454" rx="18"/></clipPath>
+    <clipPath id="clipPalmar"><rect x="436" y="155" width="318" height="205" rx="16"/></clipPath>
+    <clipPath id="clipController"><rect x="436" y="397" width="318" height="182" rx="16"/></clipPath>
+    <clipPath id="clipPipeController"><rect x="1148" y="220" width="210" height="146" rx="16"/></clipPath>
+    <marker id="arrowGray" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrowCyan" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#069dbd"/>
+    </marker>
+  </defs>
+
+  <rect width="1800" height="1200" fill="#f8fafc"/>
+
+  <!-- Panel A: real hardware photography -->
+  <rect class="panel" x="38" y="42" width="742" height="592" rx="24" filter="url(#shadow)"/>
+  <text class="panel-letter" x="57" y="80">a</text>
+  <text class="panel-title" x="102" y="82">Wearable pressure-sensing prototype</text>
+
+  <rect x="70" y="130" width="344" height="470" rx="22" fill="#fff" filter="url(#shadow)"/>
+  <image x="78" y="138" width="328" height="454" preserveAspectRatio="xMidYMid slice" clip-path="url(#clipDorsal)"
+         xlink:href="HardwareReferences/xrforce-worn-dorsal-view.png"/>
+  <rect x="78" y="138" width="328" height="454" rx="18" fill="none" stroke="#e2e8f0" stroke-width="2"/>
+
+  <rect x="428" y="147" width="334" height="221" rx="20" fill="#fff" filter="url(#shadow)"/>
+  <image x="436" y="155" width="318" height="205" preserveAspectRatio="xMidYMid slice" clip-path="url(#clipPalmar)"
+         xlink:href="HardwareReferences/xrforce-silicone-cap-palmar-view.png"/>
+  <rect x="436" y="155" width="318" height="205" rx="16" fill="none" stroke="#e2e8f0" stroke-width="2"/>
+
+  <rect x="428" y="389" width="334" height="198" rx="20" fill="#fff" filter="url(#shadow)"/>
+  <image x="436" y="397" width="318" height="182" preserveAspectRatio="xMidYMid slice" clip-path="url(#clipController)"
+         xlink:href="HardwareReferences/xrforce-wrist-controller.jpg"/>
+  <rect x="436" y="397" width="318" height="182" rx="16" fill="none" stroke="#e2e8f0" stroke-width="2"/>
+
+  <rect x="447" y="171" width="156" height="29" rx="14" fill="#ffffff" opacity="0.94"/>
+  <text class="tiny" x="462" y="191">PALMAR SENSOR VIEW</text>
+  <rect x="447" y="413" width="176" height="29" rx="14" fill="#ffffff" opacity="0.94"/>
+  <text class="tiny" x="462" y="433">CONTROLLER CLOSE-UP</text>
+
+  <!-- compact callouts over the real dorsal photo -->
+  <rect x="90" y="157" width="194" height="35" rx="17" fill="#ffffff" opacity="0.93"/>
+  <text class="small" x="105" y="180">Wrist-mounted controller</text>
+  <path class="callout" d="M285 176 L328 200"/>
+  <circle cx="328" cy="200" r="4" fill="#334155"/>
+
+  <rect x="90" y="311" width="158" height="35" rx="17" fill="#ffffff" opacity="0.93"/>
+  <text class="small" x="105" y="334">Dorsal wire routing</text>
+  <path class="callout" d="M249 328 L319 355"/>
+  <circle cx="319" cy="355" r="4" fill="#334155"/>
+
+  <rect x="90" y="512" width="177" height="35" rx="17" fill="#ffffff" opacity="0.93"/>
+  <text class="small" x="105" y="535">Silicone fingertip cap</text>
+  <path class="callout" d="M267 529 L335 514"/>
+  <circle cx="335" cy="514" r="4" fill="#334155"/>
+
+  <!-- Panel B: vector pipeline -->
+  <rect class="panel" x="806" y="42" width="956" height="592" rx="24" filter="url(#shadow)"/>
+  <text class="panel-letter" x="826" y="80">b</text>
+  <text class="panel-title" x="871" y="82">Pressure-to-force pipeline</text>
+
+  <!-- sensor cap schematic, explicitly non-anatomical -->
+  <g transform="translate(850 188)">
+    <rect x="0" y="0" width="210" height="178" rx="24" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
+    <path d="M48 42 Q48 22 70 22 H140 Q162 22 162 42 V122 Q162 148 136 148 H74 Q48 148 48 122 Z" fill="#dce8ec" stroke="#94a3b8" stroke-width="3"/>
+    <rect x="75" y="88" width="64" height="38" rx="5" fill="#1f2937"/>
+    <path d="M107 126 V158 H132" fill="none" stroke="#d7a42a" stroke-width="10"/>
+    <path d="M107 126 V158 H132" fill="none" stroke="#f4c64d" stroke-width="4"/>
+    <text class="tiny" x="46" y="171">INNER-PAD SENSOR CAP</text>
+  </g>
+  <text class="label" x="859" y="393">Fingertip pressure</text>
+  <text class="small" x="859" y="420">Black sensor inside silicone cap</text>
+
+  <!-- wired channels -->
+  <path d="M1074 277 C1102 242 1119 242 1145 277" fill="none" stroke="#ef4444" stroke-width="5"/>
+  <path d="M1074 288 C1102 253 1119 253 1145 288" fill="none" stroke="#f59e0b" stroke-width="5"/>
+  <path d="M1074 299 C1102 264 1119 264 1145 299" fill="none" stroke="#16a34a" stroke-width="5"/>
+  <path d="M1074 310 C1102 275 1119 275 1145 310" fill="none" stroke="#2563eb" stroke-width="5"/>
+  <text class="tiny" x="1078" y="229">WIRED</text>
+  <text class="tiny" x="1078" y="247">CHANNELS</text>
+
+  <!-- real controller photo in pipeline -->
+  <rect x="1140" y="212" width="226" height="162" rx="20" fill="#fff" filter="url(#shadow)"/>
+  <image x="1148" y="220" width="210" height="146" preserveAspectRatio="xMidYMid slice" clip-path="url(#clipPipeController)"
+         xlink:href="HardwareReferences/xrforce-wrist-controller.jpg"/>
+  <rect x="1148" y="220" width="210" height="146" rx="16" fill="none" stroke="#e2e8f0" stroke-width="2"/>
+  <text class="label" x="1163" y="404">Wrist controller</text>
+  <text class="small" x="1149" y="431">Filtering + UDP packetization</text>
+
+  <!-- wireless icon -->
+  <path class="flow" d="M1382 292 H1430" marker-end="url(#arrowGray)"/>
+  <g transform="translate(1450 222)">
+    <path class="cyan-stroke" d="M3 48 Q35 16 67 48"/>
+    <path class="cyan-stroke" d="M15 61 Q35 41 55 61"/>
+    <path class="cyan-stroke" d="M28 73 Q35 66 42 73"/>
+    <circle cx="35" cy="82" r="5" fill="#069dbd"/>
+    <text class="label" x="-1" y="116">UDP stream</text>
+  </g>
+  <path class="flow" d="M1541 292 H1584" marker-end="url(#arrowGray)"/>
+
+  <!-- virtual force rendering -->
+  <g transform="translate(1590 188)">
+    <rect x="0" y="0" width="132" height="178" rx="24" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
+    <path class="icon" d="M39 30 L54 134 M93 30 L78 134"/>
+    <path d="M51 135 Q66 146 81 135" fill="none" stroke="#069dbd" stroke-width="3"/>
+    <ellipse cx="66" cy="145" rx="43" ry="13" fill="#c9f2f8" stroke="#069dbd" stroke-width="2"/>
+    <path class="cyan-stroke" d="M33 90 H55" marker-end="url(#arrowCyan)"/>
+    <path class="cyan-stroke" d="M99 90 H77" marker-end="url(#arrowCyan)"/>
+  </g>
+  <text class="label" x="1585" y="393">Virtual force</text>
+  <text class="small" x="1583" y="420">Bilateral response in Unity</text>
+
+  <path class="flow" d="M1067 470 H1654" marker-end="url(#arrowGray)"/>
+  <circle cx="1067" cy="470" r="7" fill="#069dbd"/>
+  <text class="small" x="1078" y="500">Pressure samples are streamed, filtered, and mapped to opposing virtual forces.</text>
+
+  <!-- Panel C: deterministic training loop and logged outcomes -->
+  <rect class="panel" x="38" y="662" width="1724" height="432" rx="24" filter="url(#shadow)"/>
+  <text class="panel-letter" x="57" y="702">c</text>
+  <text class="panel-title" x="102" y="704">Closed-loop XR training and evaluation</text>
+
+  <!-- headset / immersed task icon -->
+  <g transform="translate(95 760)">
+    <circle cx="112" cy="112" r="105" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
+    <path d="M44 90 Q52 54 86 50 H138 Q172 54 180 90 L169 130 Q164 145 145 145 H129 Q119 145 112 133 Q105 145 95 145 H79 Q60 145 55 130 Z" fill="#ffffff" stroke="#334155" stroke-width="4"/>
+    <rect x="65" y="78" width="94" height="51" rx="19" fill="#e2e8f0" stroke="#334155" stroke-width="3"/>
+    <circle cx="92" cy="104" r="8" fill="#069dbd"/>
+    <circle cx="132" cy="104" r="8" fill="#069dbd"/>
+    <path class="cyan-stroke" d="M70 171 Q112 190 154 171"/>
+    <text class="label" x="46" y="225">Immersive task</text>
+  </g>
+  <path class="flow" d="M324 874 H400" marker-end="url(#arrowGray)"/>
+
+  <!-- loop arrows -->
+  <path class="flow" d="M548 776 C632 718 736 718 820 776" marker-end="url(#arrowGray)"/>
+  <path class="flow" d="M874 820 C932 860 932 934 874 974" marker-end="url(#arrowGray)"/>
+  <path class="flow" d="M820 1018 C736 1076 632 1076 548 1018" marker-end="url(#arrowGray)"/>
+  <path class="flow" d="M494 974 C436 934 436 860 494 820" marker-end="url(#arrowGray)"/>
+
+  <!-- precision grasp node -->
+  <g transform="translate(410 742)">
+    <circle cx="86" cy="74" r="70" fill="#fff" stroke="#94a3b8" stroke-width="2"/>
+    <path class="icon" d="M63 33 L71 93 M109 33 L101 93"/>
+    <ellipse cx="86" cy="100" rx="30" ry="9" fill="#c9f2f8" stroke="#069dbd" stroke-width="2"/>
+    <text class="label" x="20" y="166">Precision grasp</text>
+  </g>
+
+  <!-- transfer node -->
+  <g transform="translate(789 742)">
+    <circle cx="86" cy="74" r="70" fill="#fff" stroke="#94a3b8" stroke-width="2"/>
+    <ellipse cx="86" cy="98" rx="35" ry="10" fill="#c9f2f8" stroke="#069dbd" stroke-width="2"/>
+    <path class="cyan-stroke" d="M52 61 Q86 27 120 61" marker-end="url(#arrowCyan)"/>
+    <text class="label" x="27" y="166">Wafer transfer</text>
+  </g>
+
+  <!-- logging node -->
+  <g transform="translate(410 918)">
+    <circle cx="86" cy="74" r="70" fill="#fff" stroke="#94a3b8" stroke-width="2"/>
+    <path class="icon" d="M48 111 V47 M48 111 H126"/>
+    <rect x="61" y="83" width="12" height="28" fill="#cbd5e1" stroke="#334155"/>
+    <rect x="83" y="67" width="12" height="44" fill="#9fe4ef" stroke="#069dbd"/>
+    <rect x="105" y="52" width="12" height="59" fill="#cbd5e1" stroke="#334155"/>
+    <path class="cyan-stroke" d="M58 75 L80 59 L102 67 L123 39"/>
+    <text class="label" x="13" y="166">Performance logging</text>
+  </g>
+
+  <!-- dust node -->
+  <g transform="translate(789 918)">
+    <circle cx="86" cy="74" r="70" fill="#fff" stroke="#94a3b8" stroke-width="2"/>
+    <path class="cyan-stroke" d="M37 63 H86 M37 78 H98 M37 93 H79"/>
+    <circle cx="107" cy="61" r="4" fill="#64748b"/><circle cx="119" cy="76" r="4" fill="#64748b"/><circle cx="103" cy="94" r="4" fill="#64748b"/>
+    <ellipse cx="90" cy="111" rx="36" ry="10" fill="#c9f2f8" stroke="#069dbd" stroke-width="2"/>
+    <text class="label" x="32" y="166">Dust removal</text>
+  </g>
+
+  <path class="flow" d="M987 874 H1050" marker-end="url(#arrowGray)"/>
+
+  <!-- measured outcomes -->
+  <g transform="translate(1082 745)">
+    <rect x="0" y="0" width="616" height="288" rx="22" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
+    <text class="panel-title" x="30" y="46">Measured outcomes</text>
+    <rect x="30" y="72" width="171" height="72" rx="16" fill="#fff" stroke="#cbd5e1"/>
+    <text class="label" x="52" y="105">Grip force</text>
+    <path class="cyan-stroke" d="M52 124 H176"/>
+    <circle cx="104" cy="124" r="7" fill="#069dbd"/>
+    <rect x="222" y="72" width="171" height="72" rx="16" fill="#fff" stroke="#cbd5e1"/>
+    <text class="label" x="246" y="105">Transfer time</text>
+    <circle cx="307" cy="123" r="20" fill="none" stroke="#069dbd" stroke-width="3"/>
+    <path class="cyan-stroke" d="M307 123 L307 109 M307 123 L320 129"/>
+    <rect x="414" y="72" width="171" height="72" rx="16" fill="#fff" stroke="#cbd5e1"/>
+    <text class="label" x="439" y="105">Break count</text>
+    <path class="icon" d="M470 132 L488 115 L502 137 L518 111 L535 130"/>
+    <rect x="30" y="166" width="267" height="84" rx="16" fill="#fff" stroke="#cbd5e1"/>
+    <text class="label" x="54" y="201">Pressure distribution</text>
+    <g transform="translate(54 217)">
+      <rect x="0" y="0" width="20" height="20" fill="#d9f5f9"/><rect x="23" y="0" width="20" height="20" fill="#87d9e6"/><rect x="46" y="0" width="20" height="20" fill="#d9f5f9"/>
+      <rect x="0" y="23" width="20" height="20" fill="#87d9e6"/><rect x="23" y="23" width="20" height="20" fill="#069dbd"/><rect x="46" y="23" width="20" height="20" fill="#87d9e6"/>
+    </g>
+    <rect x="318" y="166" width="267" height="84" rx="16" fill="#fff" stroke="#cbd5e1"/>
+    <text class="label" x="344" y="201">Task completion</text>
+    <path class="cyan-stroke" d="M346 227 L368 246 L410 207"/>
+    <text class="small" x="425" y="233">CSV metrics</text>
+  </g>
+
+  <text class="caption" x="900" y="1160" text-anchor="middle">XRForce: pressure-aware VR training for semiconductor wafer handling</text>
+</svg>
