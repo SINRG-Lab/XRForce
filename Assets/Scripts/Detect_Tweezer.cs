@@ -40,6 +40,7 @@ public class Detect_Tweezer : MonoBehaviour
     private Transform _originalParent;
     private Rigidbody _rb;
     private bool _isParented;
+    private bool _accepted;
     private CollisionDetectionMode _savedCCD;
     private Collider _selfCollider;
 
@@ -138,6 +139,18 @@ public class Detect_Tweezer : MonoBehaviour
 
         if (!targetParent) return;
 
+        CaptureGripGeometry(
+            out Vector3 leftContactLocal,
+            out Vector3 rightContactLocal,
+            out Vector3 leftTipWorld,
+            out Vector3 rightTipWorld);
+        TransferMetricsLogger.RecordGripStarted(
+            transform.position,
+            leftContactLocal,
+            rightContactLocal,
+            leftTipWorld,
+            rightTipWorld);
+
         if (_rb && makeKinematicWhileParented)
         {
             _rb.linearVelocity = Vector3.zero;
@@ -159,6 +172,22 @@ public class Detect_Tweezer : MonoBehaviour
 
     void UnparentNow()
     {
+        if (!_accepted)
+        {
+            CaptureGripGeometry(
+                out Vector3 leftContactLocal,
+                out Vector3 rightContactLocal,
+                out Vector3 leftTipWorld,
+                out Vector3 rightTipWorld);
+            TransferMetricsLogger.RecordGripReleased(
+                transform.position,
+                leftContactLocal,
+                rightContactLocal,
+                leftTipWorld,
+                rightTipWorld,
+                countAsSlip: true);
+        }
+
         transform.SetParent(_originalParent, keepWorldPoseOnUnparent);
 
         _rightContacts.Clear();
@@ -171,6 +200,26 @@ public class Detect_Tweezer : MonoBehaviour
         }
 
         _isParented = false;
+    }
+
+    public void MarkAccepted()
+    {
+        _accepted = true;
+    }
+
+    void CaptureGripGeometry(
+        out Vector3 leftContactLocal,
+        out Vector3 rightContactLocal,
+        out Vector3 leftTipWorld,
+        out Vector3 rightTipWorld)
+    {
+        leftTipWorld = leftTip ? leftTip.bounds.center : transform.position;
+        rightTipWorld = rightTip ? rightTip.bounds.center : transform.position;
+
+        Vector3 leftContactWorld = _selfCollider ? _selfCollider.ClosestPoint(leftTipWorld) : transform.position;
+        Vector3 rightContactWorld = _selfCollider ? _selfCollider.ClosestPoint(rightTipWorld) : transform.position;
+        leftContactLocal = transform.InverseTransformPoint(leftContactWorld);
+        rightContactLocal = transform.InverseTransformPoint(rightContactWorld);
     }
 
     public void ConfigurePinchSources(Collider left, Collider right, Transform parent)

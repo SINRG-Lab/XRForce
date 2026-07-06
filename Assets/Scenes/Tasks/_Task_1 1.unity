@@ -966,11 +966,30 @@ MonoBehaviour:
   force_value_text_right: {fileID: 0}
   pusher_Left: {fileID: 0}
   pusher_Right: {fileID: 0}
+  directionReference: {fileID: 0}
   direction: {x: 1, y: 0, z: 0}
   useLocalSpace: 1
   forceMode: 5
   applyContinuously: 1
   receiver: {fileID: 1442004004}
+  useAdvancedProcessing: 1
+  leftSource: 1
+  rightSource: 1
+  useWeightedForce: 1
+  weightedForcePower: 2
+  calibrateOnStart: 1
+  calibrationDuration: 0.5
+  subtractBaseline: 1
+  baselineLeft: 0
+  baselineRight: 0
+  startThreshold: 0.15
+  stopThreshold: 0.08
+  smoothingTime: 0.08
+  maxAppliedForce: 2.5
+  maxRiseRatePerSecond: 8
+  driveMode: 0
+  proxyDistancePerForce: 0.01
+  maxProxyOffset: 0.03
 --- !u!1 &266211180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1682,8 +1701,12 @@ MonoBehaviour:
   receiver: {fileID: 1442004004}
   folderName: PressureLogs
   fileName: pressure_log.csv
+  appendTimestampToFileName: 1
+  enableLogging: 1
   logOnlyWhenConnected: 1
+  logOnlyNewPackets: 1
   logHz: 20
+  flushEveryRows: 20
 --- !u!1 &479664416
 GameObject:
   m_ObjectHideFlags: 0
@@ -4655,6 +4678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ReceiverLatest
   listenPort: 3333
   channels: []
+  channelCount: 0
   heatmapA:
   - 0
   - 0
@@ -4679,6 +4703,7 @@ MonoBehaviour:
   lastHeader: 
   lastSender: 
   lastPacketAgeSec: 999
+  packetSequence: 0
 --- !u!4 &1442004005
 Transform:
   m_ObjectHideFlags: 0
@@ -5019,8 +5044,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaferSpawner
   waferPrefab: {fileID: 82616485267616213, guid: 56353f796ebca486190366441655b317, type: 3}
   spawnPoint: {fileID: 1028709700}
+  leftTip: {fileID: 0}
+  rightTip: {fileID: 0}
+  targetParent: {fileID: 0}
+  autoResolveTweezers: 1
   spawnDelay: 2
   brokenCleanupDelay: 1.5
+  spawnDirtOnWafer: 0
+  dustPrefab: {fileID: 0}
+  dustCount: 80
+  dustScaleRange: {x: 0.6, y: 1.4}
+  dustSurfaceOffset: 0.0005
+  cleanThreshold: 0
+  requireCleanBeforeAccept: 0
 --- !u!4 &1509456545
 Transform:
   m_ObjectHideFlags: 0
@@ -5816,10 +5852,22 @@ PrefabInstance:
       propertyPath: rx
       value: 
       objectReference: {fileID: 1442004004}
+    - target: {fileID: 810961612584749731, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1236883852225660270, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       propertyPath: rx
       value: 
       objectReference: {fileID: 1442004004}
+    - target: {fileID: 1421487703308536384, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2133395218289537445, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3087226021855106132, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -5864,6 +5912,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3657781259381465518, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4657554032497813022, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       propertyPath: onTargetReached.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5875,6 +5927,10 @@ PrefabInstance:
     - target: {fileID: 4657554032497813022, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       propertyPath: onTargetReached.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: StopTimer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4787218294448523099, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4815037393420555716, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       propertyPath: m_IsActive
@@ -5900,9 +5956,21 @@ PrefabInstance:
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadNextScene
       objectReference: {fileID: 0}
+    - target: {fileID: 6818889949191617214, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511367276993612765, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7526510161981280424, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       propertyPath: m_Name
       value: Stuff
+      objectReference: {fileID: 0}
+    - target: {fileID: 7606704594026579776, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7900952560601136727, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target

@@ -28,6 +28,10 @@ public class Detect_Wafer : MonoBehaviour
     IEnumerator HandleWafer(GameObject wafer)
     {
         _count++;
+        var tweezerDetection = wafer.GetComponent<Detect_Tweezer>();
+        if (tweezerDetection != null)
+            tweezerDetection.MarkAccepted();
+
         TransferMetricsLogger.RecordWaferAccepted(_count);
         Debug.Log($"Wafer count: {_count}/{targetCount}");
 
@@ -46,6 +50,7 @@ public class Detect_Wafer : MonoBehaviour
             yield break;
         }
 
+        TransferMetricsLogger.RecordTaskCompleted(_count);
         onTargetReached?.Invoke();
     }
 
