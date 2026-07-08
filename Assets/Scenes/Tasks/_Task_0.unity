@@ -2470,7 +2470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f34be8c2392a4880a1bd9fd4b375721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
-  nextSceneName: Task_1
+  nextSceneName: _Task_1
 --- !u!4 &1605236827
 Transform:
   m_ObjectHideFlags: 0
@@ -2987,6 +2987,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.63999945
       objectReference: {fileID: 0}
+    - target: {fileID: 533747587689346332, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 810961612584749731, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3055,6 +3059,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3824411567145777457, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4258947984255989251, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       propertyPath: waferSpawner
       value: 
@@ -3086,6 +3094,10 @@ PrefabInstance:
     - target: {fileID: 6327545530132058776, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       propertyPath: m_MassScale
       value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548459744345265481, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6657543939151725572, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3159,6 +3171,12 @@ PrefabInstance:
       addedObject: {fileID: 65397153}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3749640243340148907, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 1573000162104946373, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 2748908690137536850, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}

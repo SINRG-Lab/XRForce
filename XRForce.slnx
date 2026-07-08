@@ -128,7 +128,6 @@
   <Project Path="Unity.InferenceEngine.Editor.Visualizer.csproj" />
   <Project Path="Unity.XR.Hands.Samples.VisualizerSample.csproj" />
   <Project Path="Unity.AI.Navigation.csproj" />
-  <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="Unity.XR.ARFoundation.Editor.csproj" />
   <Project Path="Meta.Voice.Hub.Runtime.csproj" />
   <Project Path="Unity.Mathematics.Editor.csproj" />
