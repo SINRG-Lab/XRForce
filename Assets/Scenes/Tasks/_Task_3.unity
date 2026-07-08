@@ -477,7 +477,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6548459744345265481, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6657543939151725572, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -551,15 +551,6 @@ PrefabInstance:
       addedObject: {fileID: 1901889749}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3749640243340148907, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 1573000162104946373, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 2748908690137536850, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 4640301348612434168, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
