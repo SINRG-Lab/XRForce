@@ -620,7 +620,7 @@ MonoBehaviour:
   applyContinuously: 1
   receiver: {fileID: 1442004004}
   useAdvancedProcessing: 0
-  leftSource: 1
+  leftSource: 0
   rightSource: 1
   useWeightedForce: 0
   weightedForcePower: 2
@@ -991,10 +991,15 @@ MonoBehaviour:
   receiver: {fileID: 1442004004}
   folderName: PressureLogs
   fileName: pressure_log.csv
+  appendTimestampToFileName: 1
   enableLogging: 1
   logOnlyWhenConnected: 1
+  logOnlyNewPackets: 1
   logHz: 20
   flushEveryRows: 20
+  idealPressureA: 0.15
+  idealPressureB: 0.15
+  pressureTolerance: 0.05
 --- !u!1 &479664416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1825,6 +1830,7 @@ MonoBehaviour:
   lastHeader: 
   lastSender: 
   lastPacketAgeSec: 999
+  packetSequence: 0
 --- !u!4 &1442004005
 Transform:
   m_ObjectHideFlags: 0
@@ -2166,6 +2172,13 @@ MonoBehaviour:
   autoResolveTweezers: 1
   spawnDelay: 2
   brokenCleanupDelay: 1.5
+  spawnDirtOnWafer: 0
+  dustPrefab: {fileID: 0}
+  dustCount: 80
+  dustScaleRange: {x: 0.6, y: 1.4}
+  dustSurfaceOffset: 0.0005
+  cleanThreshold: 0
+  requireCleanBeforeAccept: 0
 --- !u!4 &1509456545
 Transform:
   m_ObjectHideFlags: 0
@@ -2990,6 +3003,10 @@ PrefabInstance:
       propertyPath: rx
       value: 
       objectReference: {fileID: 1442004004}
+    - target: {fileID: 1236883852225660270, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
+      propertyPath: maxValue
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1421487703308536384, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       propertyPath: m_IsActive
       value: 0

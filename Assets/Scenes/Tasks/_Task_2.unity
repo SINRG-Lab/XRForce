@@ -1416,6 +1416,9 @@ MonoBehaviour:
   logOnlyNewPackets: 1
   logHz: 20
   flushEveryRows: 20
+  idealPressureA: 0.15
+  idealPressureB: 0.15
+  pressureTolerance: 0.05
 --- !u!1 &479664416
 GameObject:
   m_ObjectHideFlags: 0
@@ -2518,6 +2521,13 @@ MonoBehaviour:
   autoResolveTweezers: 1
   spawnDelay: 2
   brokenCleanupDelay: 1.5
+  spawnDirtOnWafer: 0
+  dustPrefab: {fileID: 0}
+  dustCount: 80
+  dustScaleRange: {x: 0.6, y: 1.4}
+  dustSurfaceOffset: 0.0005
+  cleanThreshold: 0
+  requireCleanBeforeAccept: 0
 --- !u!4 &1509456545
 Transform:
   m_ObjectHideFlags: 0
@@ -3239,7 +3249,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 394937885}
-  m_VersionIndex: 3558
+  m_VersionIndex: 3561
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

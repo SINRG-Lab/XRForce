@@ -54,6 +54,7 @@ public class PressureCsvLogger : MonoBehaviour
 
         _filePath = Path.Combine(folderPath, GetSessionFileName());
         _headerWritten = File.Exists(_filePath) && new FileInfo(_filePath).Length > 0;
+        EnsureWriterAndHeader();
         Debug.Log("Logging pressure CSV to: " + _filePath, this);
     }
 
@@ -76,37 +77,10 @@ public class PressureCsvLogger : MonoBehaviour
 
     void WriteRow(ReceiverLatest source)
     {
-        if (_writer == null)
-        {
-            _writer = new StreamWriter(_filePath, true, new UTF8Encoding(false));
-            _writer.AutoFlush = false;
-        }
+        EnsureWriterAndHeader();
 
         var sb = _rowBuilder;
         sb.Clear();
-
-        // Header once
-        if (!_headerWritten)
-        {
-            sb.Append("timestamp_local,time_seconds,user_id,task_name,transfer_index,connected,packet_age_seconds,packet_sequence,channel_count,last_header,last_sender,mean_a,mean_b,ideal_a,ideal_b,error_a,error_b,abs_error_a,abs_error_b,within_tolerance_a,within_tolerance_b");
-
-            for (int i = 0; i < 9; i++)
-            {
-                sb.Append(",A");
-                sb.Append(i);
-            }
-
-            for (int i = 0; i < 9; i++)
-            {
-                sb.Append(",B");
-                sb.Append(i);
-            }
-
-            sb.AppendLine();
-            _writer.Write(sb.ToString());
-            sb.Clear();
-            _headerWritten = true;
-        }
 
         float meanA = CalculateMean(source.heatmapA);
         float meanB = CalculateMean(source.heatmapB);
@@ -185,6 +159,40 @@ public class PressureCsvLogger : MonoBehaviour
 
         _writer.Flush();
         _pendingRows = 0;
+    }
+
+    void EnsureWriterAndHeader()
+    {
+        if (_writer == null)
+        {
+            _writer = new StreamWriter(_filePath, true, new UTF8Encoding(false));
+            _writer.AutoFlush = false;
+        }
+
+        if (_headerWritten)
+            return;
+
+        var sb = _rowBuilder;
+        sb.Clear();
+        sb.Append("timestamp_local,time_seconds,user_id,task_name,transfer_index,connected,packet_age_seconds,packet_sequence,channel_count,last_header,last_sender,mean_a,mean_b,ideal_a,ideal_b,error_a,error_b,abs_error_a,abs_error_b,within_tolerance_a,within_tolerance_b");
+
+        for (int i = 0; i < 9; i++)
+        {
+            sb.Append(",A");
+            sb.Append(i);
+        }
+
+        for (int i = 0; i < 9; i++)
+        {
+            sb.Append(",B");
+            sb.Append(i);
+        }
+
+        sb.AppendLine();
+        _writer.Write(sb.ToString());
+        _writer.Flush();
+        sb.Clear();
+        _headerWritten = true;
     }
 
     string GetSessionFileName()

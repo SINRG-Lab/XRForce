@@ -1707,6 +1707,9 @@ MonoBehaviour:
   logOnlyNewPackets: 1
   logHz: 20
   flushEveryRows: 20
+  idealPressureA: 0.15
+  idealPressureB: 0.15
+  pressureTolerance: 0.05
 --- !u!1 &479664416
 GameObject:
   m_ObjectHideFlags: 0
@@ -3514,11 +3517,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9165230245375989247, guid: 6a74fc6bad52b444a95cff9a80889afc, type: 3}
   m_PrefabInstance: {fileID: 1028709698}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1028709700 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9212524361359656216, guid: 6a74fc6bad52b444a95cff9a80889afc, type: 3}
-  m_PrefabInstance: {fileID: 1028709698}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1028709701 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8603333924844725723, guid: 6a74fc6bad52b444a95cff9a80889afc, type: 3}
@@ -4647,6 +4645,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1365871690 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 5092077112589046629, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
+  m_PrefabInstance: {fileID: 1722399973}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1365871691 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 8570683520484198553, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
+  m_PrefabInstance: {fileID: 1722399973}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1365871692 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5934783296095614346, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
+  m_PrefabInstance: {fileID: 1722399973}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1365871693 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4599310335448245181, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
+  m_PrefabInstance: {fileID: 1722399973}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1442004003
 GameObject:
   m_ObjectHideFlags: 0
@@ -5043,13 +5061,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaferSpawner
   waferPrefab: {fileID: 82616485267616213, guid: 56353f796ebca486190366441655b317, type: 3}
-  spawnPoint: {fileID: 1028709700}
-  leftTip: {fileID: 0}
-  rightTip: {fileID: 0}
-  targetParent: {fileID: 0}
+  spawnPoint: {fileID: 1365871692}
+  leftTip: {fileID: 1365871691}
+  rightTip: {fileID: 1365871690}
+  targetParent: {fileID: 1365871693}
   autoResolveTweezers: 1
   spawnDelay: 2
   brokenCleanupDelay: 1.5
+  spawnDirtOnWafer: 0
+  dustPrefab: {fileID: 0}
+  dustCount: 80
+  dustScaleRange: {x: 0.6, y: 1.4}
+  dustSurfaceOffset: 0.0005
+  cleanThreshold: 0
+  requireCleanBeforeAccept: 0
 --- !u!4 &1509456545
 Transform:
   m_ObjectHideFlags: 0
@@ -5951,7 +5976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5934783296095614346, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.022
+      value: 0.019
       objectReference: {fileID: 0}
     - target: {fileID: 6657543939151725572, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target

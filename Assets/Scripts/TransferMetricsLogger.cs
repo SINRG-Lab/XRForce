@@ -58,6 +58,12 @@ public static class TransferMetricsLogger
         _sessionStamp = null;
     }
 
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+    static void InitializeSessionFiles()
+    {
+        EnsureWriters();
+    }
+
     public static void SetUserId(string userId)
     {
         PlayerPrefs.SetString(UserIdPlayerPrefsKey, string.IsNullOrWhiteSpace(userId) ? "unknown_user" : userId.Trim());
@@ -404,7 +410,10 @@ public static class TransferMetricsLogger
     {
         var writer = new StreamWriter(path, true, new UTF8Encoding(false));
         if (new FileInfo(path).Length == 0)
+        {
             writer.WriteLine(header);
+            writer.Flush();
+        }
         return writer;
     }
 
