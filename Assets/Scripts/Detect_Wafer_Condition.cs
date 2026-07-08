@@ -24,6 +24,7 @@ public class Detect_Wafer_Condition : MonoBehaviour
     int forbiddenCount = 0;
 
     Coroutine countdownRoutine;
+    bool countdownCompleted;
 
     void Awake()
     {
@@ -76,7 +77,7 @@ public class Detect_Wafer_Condition : MonoBehaviour
 
     void TryStartCountdown()
     {
-        if (ConditionValid() && countdownRoutine == null)
+        if (!countdownCompleted && ConditionValid() && countdownRoutine == null)
             countdownRoutine = StartCoroutine(Countdown());
     }
 
@@ -110,6 +111,7 @@ public class Detect_Wafer_Condition : MonoBehaviour
         }
 
         UpdateText(0f);
+        countdownCompleted = true;
         countdownRoutine = null;
         Debug.Log("✅ Countdown completed!");
 
