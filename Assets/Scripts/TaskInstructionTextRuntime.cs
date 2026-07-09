@@ -35,22 +35,22 @@ public static class TaskInstructionTextRuntime
         {
             case "_Task_0":
                 title = "Task 0";
-                body = "Use the tweezers to pick up each wafer and place it in the end location.\n\nComplete <b>3 wafers</b> to finish this task.";
+                body = "Use the tweezers to pick wafers and hover near end location.\n\nComplete <b>3 wafers</b> to finish this task.";
                 return true;
 
             case "_Task_1":
                 title = "Task 1";
-                body = "Use the tweezers to transfer each wafer to the end location.\n\nComplete <b>3 wafers</b>. If a wafer breaks, wait for the replacement and continue.";
+                body = "Use the tweezers to transfer each wafer to the end location.\n\nComplete <b>3 wafers</b>.";
                 return true;
 
             case "_Task_2":
                 title = "Task 2";
-                body = "Use the tweezers to move each wafer to the end location with controlled handling.\n\nComplete <b>2 wafers</b> to unlock the next task.";
+                body = "Use the tweezers to place the Wafer in the Horizontal slot wait for the timer to end and move the wafer to the end location with controlled handling.\n\nComplete <b>2 wafers</b> to finish this task.";
                 return true;
 
             case "_Task_3":
                 title = "Task 3";
-                body = "Use the spray bottle to clean the dirt from the wafer, then use the tweezers to place the clean wafer in the end location.\n\nOnly a clean wafer is accepted. Complete <b>3 wafers</b>.";
+                body = "Pick the Wafer, then use the spray bottle to clean the wafer and place the clean wafer in the end location.\n\nOnly a clean wafer is accepted. Complete <b>3 wafers</b>.";
                 return true;
 
             default:

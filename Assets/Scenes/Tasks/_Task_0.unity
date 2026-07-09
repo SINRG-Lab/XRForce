@@ -145,14 +145,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65397152}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 123, y: -208, z: -20}
-  m_LocalScale: {x: 49.99999, y: 49.999985, z: 50}
+  m_LocalRotation: {x: 0.25881916, y: -0, z: -0, w: 0.9659259}
+  m_LocalPosition: {x: 263.30008, y: -260.50003, z: -55.19975}
+  m_LocalScale: {x: 25, y: 25, z: 25}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1505340801}
   - {fileID: 1598905106}
-  m_Father: {fileID: 6586898050047163986}
+  m_Father: {fileID: 4808113749875654211}
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!114 &65397154
 MonoBehaviour:
@@ -7579,6 +7579,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2465945342289119397}
+  - {fileID: 65397153}
   - {fileID: 5598055370842410983}
   - {fileID: 2104382601454723594}
   m_Father: {fileID: 4166005823504021213}
@@ -9961,7 +9962,6 @@ RectTransform:
   - {fileID: 7905516842761408682}
   - {fileID: 8666484888749282453}
   - {fileID: 6330808989256533357}
-  - {fileID: 65397153}
   m_Father: {fileID: 5598055370842410983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -11898,10 +11898,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178491435205696791, guid: 7cd2895872ed54a47a9a889c35d73b27, type: 3}
+      propertyPath: rx
+      value: 
+      objectReference: {fileID: 1442004004}
     - target: {fileID: 5513175050420694006, guid: 7cd2895872ed54a47a9a889c35d73b27, type: 3}
       propertyPath: m_Name
       value: Tweezers
       objectReference: {fileID: 0}
+    - target: {fileID: 5583469357822486358, guid: 7cd2895872ed54a47a9a889c35d73b27, type: 3}
+      propertyPath: rx
+      value: 
+      objectReference: {fileID: 1442004004}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
