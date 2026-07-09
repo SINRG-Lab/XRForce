@@ -45,7 +45,7 @@ public static class TaskInstructionTextRuntime
 
             case "_Task_2":
                 title = "Task 2";
-                body = "Use the tweezers to move each wafer to the end location with controlled handling.\n\nComplete <b>3 wafers</b> to unlock the next task.";
+                body = "Use the tweezers to move each wafer to the end location with controlled handling.\n\nComplete <b>2 wafers</b> to unlock the next task.";
                 return true;
 
             case "_Task_3":
