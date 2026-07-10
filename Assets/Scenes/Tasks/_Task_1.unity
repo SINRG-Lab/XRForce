@@ -517,21 +517,8 @@ MonoBehaviour:
   forceMode: 0
   applyContinuously: 1
   receiver: {fileID: 1442004004}
-  useAdvancedProcessing: 0
   leftSource: 0
   rightSource: 1
-  useWeightedForce: 0
-  weightedForcePower: 2
-  calibrateOnStart: 0
-  calibrationDuration: 0.5
-  subtractBaseline: 0
-  baselineLeft: 0
-  baselineRight: 0
-  startThreshold: 0
-  stopThreshold: 0.04
-  smoothingTime: 0
-  maxAppliedForce: 15
-  maxRiseRatePerSecond: 40
   driveMode: 0
   proxyDistancePerForce: 0.01
   maxProxyOffset: 0.03
@@ -1757,6 +1744,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReceiverLatest
   listenPort: 3333
+  announceToEsp: 1
+  espDiscoveryPort: 13333
+  announceIntervalSeconds: 0.25
+  announceDurationSeconds: 10
+  announcePayload: XRForce
   channels: []
   channelCount: 0
   heatmapA:
@@ -1784,6 +1776,11 @@ MonoBehaviour:
   lastSender: 
   lastPacketAgeSec: 999
   packetSequence: 0
+  receivedPacketSequence: 0
+  receivedPacketsPerSecond: 0
+  packetsSkippedBeforeConsume: 0
+  logReceiveStats: 0
+  logReceiveStatsInterval: 1
 --- !u!4 &1442004005
 Transform:
   m_ObjectHideFlags: 0
@@ -8034,6 +8031,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3824411566501512660}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &4670413049826541278
 MonoBehaviour:

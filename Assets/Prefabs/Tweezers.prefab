@@ -393,8 +393,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.5544802, y: 1, z: 0.6625951}
+  m_Center: {x: 0.2227623, y: 0, z: 0.16870378}
 --- !u!1 &1086813349563279435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,7 +1483,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3239012409565961072}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1752,7 +1752,7 @@ HingeJoint:
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   m_UseSpring: 1
   m_Spring:
-    spring: 500
+    spring: 300
     damper: 70
     targetPosition: -5
   m_UseMotor: 0
@@ -1765,7 +1765,7 @@ HingeJoint:
   m_UseAcceleration: 0
   m_Limits:
     min: -1
-    max: 5
+    max: 5.5
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
@@ -3028,7 +3028,7 @@ HingeJoint:
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   m_UseSpring: 1
   m_Spring:
-    spring: 500
+    spring: 300
     damper: 70
     targetPosition: 5
   m_UseMotor: 0
@@ -3040,7 +3040,7 @@ HingeJoint:
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
-    min: -5
+    min: -5.5
     max: 1
     bounciness: 0
     bounceMinVelocity: 0.2
@@ -3655,8 +3655,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.58407575, y: 1, z: 0.62328213}
+  m_Center: {x: -0.20795526, y: 0, z: 0.1883566}
 --- !u!1 &7026288991023163759
 GameObject:
   m_ObjectHideFlags: 0
@@ -3821,7 +3821,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7442198528468517024}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

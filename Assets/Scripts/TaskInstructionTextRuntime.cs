@@ -74,6 +74,9 @@ public static class TaskInstructionTextRuntime
         if (text == null)
             return;
 
+        if (!IsUnderInitialText(text.transform))
+            return;
+
         if (IsInitialTitle(text.text))
             text.text = FormatTitle(title);
         else if (IsInitialBody(text.text, text.gameObject.name))
@@ -85,10 +88,26 @@ public static class TaskInstructionTextRuntime
         if (text == null)
             return;
 
+        if (!IsUnderInitialText(text.transform))
+            return;
+
         if (IsInitialTitle(text.text))
             text.text = FormatTitle(title);
         else if (IsInitialBody(text.text, text.gameObject.name))
             text.text = body;
+    }
+
+    static bool IsUnderInitialText(Transform transform)
+    {
+        while (transform != null)
+        {
+            if (transform.name == "InitialText (Legacy)")
+                return true;
+
+            transform = transform.parent;
+        }
+
+        return false;
     }
 
     static bool IsInitialTitle(string value)

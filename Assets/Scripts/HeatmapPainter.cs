@@ -30,6 +30,8 @@ public class HeatmapPainter : MonoBehaviour
     {
         if (rx == null || cells == null || cells.Length < 9) return;
 
+        rx.FlushLatestPacket();
+
         float[] values = (source == Source.HeatmapA) ? rx.heatmapA : rx.heatmapB;
         if (values == null || values.Length < 9) return;
 
