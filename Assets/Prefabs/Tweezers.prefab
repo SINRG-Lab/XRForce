@@ -177,38 +177,11 @@ MonoBehaviour:
   - {fileID: 6772596451715145941}
   - {fileID: 7862064153296704179}
   - {fileID: 5295591392076211586}
-  gradient:
-    serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 0.2509804, b: 0.39607844, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  minValue: 0
-  maxValue: 10.5
+  zeroPressureColor: {r: 1, g: 1, b: 1, a: 1}
+  targetPressureColor: {r: 0, g: 1, b: 0, a: 1}
+  overPressureColor: {r: 1, g: 0, b: 0, a: 1}
+  targetPressure: 3.8
+  redPressure: 10.5
   source: 0
 --- !u!1 &910438079066419547
 GameObject:
@@ -4077,38 +4050,11 @@ MonoBehaviour:
   - {fileID: 2294967357612815879}
   - {fileID: 6075035895693154400}
   - {fileID: 3624063440937654587}
-  gradient:
-    serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 0.2509804, b: 0.39607844, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  minValue: 0
-  maxValue: 5
+  zeroPressureColor: {r: 1, g: 1, b: 1, a: 1}
+  targetPressureColor: {r: 0, g: 1, b: 0, a: 1}
+  overPressureColor: {r: 1, g: 0, b: 0, a: 1}
+  targetPressure: 3.8
+  redPressure: 10.5
   source: 1
 --- !u!1 &7773274095718408414
 GameObject:

@@ -4,10 +4,13 @@ public class HeatmapPainter : MonoBehaviour
 {
     public ReceiverLatest rx;
     public Renderer[] cells = new Renderer[9];   // 0..8 top-left -> bottom-right
-    public Gradient gradient;
 
-    public float minValue = 0f;
-    public float maxValue = 20f;   // since you are sending Force (N), not ADC (adjust!)
+    [Header("Color Mapping")]
+    public Color zeroPressureColor = Color.white;
+    public Color targetPressureColor = Color.green;
+    public Color overPressureColor = Color.red;
+    [Min(0.001f)] public float targetPressure = 3f;
+    [Min(0.001f)] public float redPressure = 10.5f;
 
     public enum Source { HeatmapA, HeatmapB }
     public Source source = Source.HeatmapA;
@@ -38,15 +41,31 @@ public class HeatmapPainter : MonoBehaviour
         for (int i = 0; i < 9; i++)
         {
             float v = values[i];
-            float t = Mathf.InverseLerp(minValue, maxValue, v);
             if (cells[i] == null) continue;
 
             var block = _blocks[i];
-            Color color = gradient.Evaluate(t);
+            Color color = EvaluatePressureColor(v);
             cells[i].GetPropertyBlock(block);
             block.SetColor(ColorId, color);
             block.SetColor(BaseColorId, color);
             cells[i].SetPropertyBlock(block);
         }
+    }
+
+    Color EvaluatePressureColor(float pressure)
+    {
+        float clampedPressure = Mathf.Max(0f, pressure);
+
+        if (clampedPressure <= targetPressure)
+        {
+            float t = Mathf.InverseLerp(0f, targetPressure, clampedPressure);
+            return Color.Lerp(zeroPressureColor, targetPressureColor, t);
+        }
+
+        if (redPressure <= targetPressure)
+            return overPressureColor;
+
+        float overTargetT = Mathf.InverseLerp(targetPressure, redPressure, clampedPressure);
+        return Color.Lerp(targetPressureColor, overPressureColor, overTargetT);
     }
 }
