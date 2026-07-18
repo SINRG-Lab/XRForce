@@ -381,9 +381,8 @@ public static class TransferMetricsLogger
         if (_transferWriter != null)
             return;
 
-        string folderPath = Path.Combine(Application.persistentDataPath, FolderName);
-        Directory.CreateDirectory(folderPath);
-        _sessionStamp = string.IsNullOrEmpty(_sessionStamp) ? DateTime.Now.ToString("yyyyMMdd_HHmmss") : _sessionStamp;
+        string folderPath = LogRunSession.GetSubfolderPath(FolderName);
+        _sessionStamp = string.IsNullOrEmpty(_sessionStamp) ? LogRunSession.RunStamp : _sessionStamp;
 
         string transferPath = Path.Combine(folderPath, $"transfer_metrics_{_sessionStamp}.csv");
         string taskPath = Path.Combine(folderPath, $"task_metrics_{_sessionStamp}.csv");

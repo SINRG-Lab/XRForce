@@ -49,8 +49,7 @@ public class PressureCsvLogger : MonoBehaviour
             return;
         }
 
-        string folderPath = Path.Combine(Application.persistentDataPath, folderName);
-        Directory.CreateDirectory(folderPath);
+        string folderPath = LogRunSession.GetSubfolderPath(folderName);
 
         _filePath = Path.Combine(folderPath, GetSessionFileName());
         _headerWritten = File.Exists(_filePath) && new FileInfo(_filePath).Length > 0;
