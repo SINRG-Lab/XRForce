@@ -57,8 +57,9 @@
 
   <text class="label" x="62" y="499">Silicone</text>
   <text class="label" x="62" y="520">fingertip cap</text>
-  <path class="leader" d="M170 509 H265 L373 523"/>
-  <circle cx="373" cy="523" r="4" fill="#111827"/>
+  <path class="leader" d="M170 509 H265 L492 532"/>
+  <circle cx="492" cy="532" r="4" fill="#111827"/>
+  <ellipse cx="492" cy="532" rx="34" ry="46" fill="none" stroke="#089fbd" stroke-width="3" stroke-dasharray="6 5"/>
 
   <rect x="560" y="132" width="270" height="175" rx="17" fill="#fff" filter="url(#shadow)"/>
   <image x="570" y="142" width="250" height="155" preserveAspectRatio="xMidYMid slice" clip-path="url(#photoPalm)"
@@ -80,13 +81,15 @@
   <!-- b: circular sensor and rendering inset -->
   <text class="letter" x="872" y="65">b</text>
   <circle cx="1214" cy="301" r="286" fill="#fff" stroke="#374151" stroke-width="2.5"/>
-  <text class="title" x="1214" y="78" text-anchor="middle">Pressure-to-force pipeline</text>
+  <text class="title" x="1214" y="66" text-anchor="middle">Sensor attachment</text>
+  <text class="label" x="1214" y="94" text-anchor="middle">Pressure-to-force pipeline</text>
 
   <rect x="925" y="135" width="215" height="146" rx="17" fill="#fff" filter="url(#shadow)"/>
   <image x="935" y="145" width="195" height="126" preserveAspectRatio="xMidYMid slice" clip-path="url(#capInset)"
          xlink:href="HardwareReferences/xrforce-silicone-cap-palmar-view.png"/>
   <rect x="935" y="145" width="195" height="126" rx="12" fill="none" stroke="#e5e7eb" stroke-width="2"/>
-  <text class="small" x="1032" y="301" text-anchor="middle">Inner fingertip sensor</text>
+  <rect x="955" y="175" width="57" height="44" rx="5" fill="#089fbd" fill-opacity="0.16" stroke="#089fbd" stroke-width="2" stroke-dasharray="4 3"/>
+  <text class="small" x="1032" y="301" text-anchor="middle">Actual fingertip cap</text>
 
   <path d="M1142 204 C1158 178 1173 178 1189 204" fill="none" stroke="#ef4444" stroke-width="4"/>
   <path d="M1142 216 C1158 190 1173 190 1189 216" fill="none" stroke="#f59e0b" stroke-width="4"/>
@@ -109,7 +112,27 @@
     <text class="small" x="31" y="103" text-anchor="middle">UDP</text>
   </g>
 
-  <g transform="translate(982 358)">
+  <!-- Magnified placement detail: the sensing face is inside the silicone cap on the palmar pad. -->
+  <g transform="translate(905 342)">
+    <text class="label" x="88" y="0" text-anchor="middle">Attachment detail</text>
+    <path d="M35 143 C26 110 31 65 62 39 C89 17 138 20 158 47 C177 74 167 121 142 150 L80 163 C58 163 41 155 35 143 Z" fill="#e5b28f" stroke="#9f725d" stroke-width="2"/>
+    <path d="M22 142 C13 105 20 55 52 27 C83 1 142 4 170 39 C192 67 184 128 155 160" fill="none" stroke="#cbd5d9" stroke-width="22" stroke-opacity="0.8"/>
+    <path d="M22 142 C13 105 20 55 52 27 C83 1 142 4 170 39 C192 67 184 128 155 160" fill="none" stroke="#f1f5f9" stroke-width="13" stroke-opacity="0.8"/>
+    <rect x="64" y="113" width="65" height="30" rx="4" fill="#1f2937" stroke="#111827" stroke-width="2"/>
+    <path d="M129 128 H158 C174 128 179 117 179 104" fill="none" stroke="#d39a21" stroke-width="12" stroke-linecap="round"/>
+    <path d="M129 128 H158 C174 128 179 117 179 104" fill="none" stroke="#f2c14f" stroke-width="5" stroke-linecap="round"/>
+    <path class="leader" d="M17 43 H-4"/>
+    <text class="tiny" x="-2" y="32" text-anchor="end">SILICONE CAP</text>
+    <path class="leader" d="M64 128 H26"/>
+    <text class="tiny" x="24" y="145" text-anchor="end">PRESSURE</text>
+    <text class="tiny" x="24" y="160" text-anchor="end">SENSOR</text>
+    <path class="leader" d="M179 104 H203"/>
+    <text class="tiny" x="205" y="95">FLEX TAIL</text>
+    <text class="small" x="94" y="188" text-anchor="middle">sensor faces the inner fingertip pad</text>
+  </g>
+
+  <path class="outline" d="M1094 461 H1124" marker-end="url(#arrowGray)"/>
+  <g transform="translate(1110 358)">
     <text class="label" x="88" y="0" text-anchor="middle">Contact pressure</text>
     <path d="M55 18 V50 M88 18 V50 M121 18 V50" stroke="#111827" stroke-width="4" marker-end="url(#arrowGray)"/>
     <rect x="40" y="62" width="96" height="96" fill="#fff" stroke="#374151" stroke-width="2"/>
@@ -118,8 +141,8 @@
     <rect x="44" y="126" width="28" height="28" fill="#d7f4f8"/><rect x="74" y="126" width="28" height="28" fill="#78d4e2"/><rect x="104" y="126" width="28" height="28" fill="#d7f4f8"/>
   </g>
 
-  <path class="outline" d="M1145 463 H1201" marker-end="url(#arrowGray)"/>
-  <g transform="translate(1222 364)">
+  <path class="outline" d="M1273 463 H1301" marker-end="url(#arrowGray)"/>
+  <g transform="translate(1304 364)">
     <text class="label" x="92" y="0" text-anchor="middle">Virtual force</text>
     <ellipse cx="92" cy="148" rx="71" ry="19" fill="#cdf4f8" stroke="#089fbd" stroke-width="2"/>
     <path class="outline" d="M49 35 L70 130 M135 35 L114 130"/>

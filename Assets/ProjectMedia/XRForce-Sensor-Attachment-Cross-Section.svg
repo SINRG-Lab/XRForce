@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <style>
+      .title { font: 700 34px Arial, Helvetica, sans-serif; fill: #111827; }
+      .subtitle { font: 500 19px Arial, Helvetica, sans-serif; fill: #475569; }
+      .heading { font: 700 25px Arial, Helvetica, sans-serif; fill: #111827; }
+      .body { font: 500 20px Arial, Helvetica, sans-serif; fill: #475569; }
+      .sensor-label { font: 700 15px Arial, Helvetica, sans-serif; fill: #ffffff; letter-spacing: .35px; }
+      .leader { fill: none; stroke: #334155; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="760" fill="#ffffff"/>
+  <text class="title" x="70" y="72">Sensor attachment cross-section</text>
+  <text class="subtitle" x="70" y="105">Side view of the finger-contact interface</text>
+
+  <!-- Fingertip -->
+  <path d="M213 542 C166 490 166 395 207 319 C257 226 380 188 477 241 C559 286 583 384 545 467 C514 535 454 581 373 605 C302 625 244 596 213 542 Z" fill="#e8b795" stroke="#a97259" stroke-width="4"/>
+  <path d="M218 532 C201 453 220 355 269 285" fill="none" stroke="#c88f72" stroke-width="3" opacity="0.52"/>
+  <path d="M247 563 C229 465 252 363 298 280" fill="none" stroke="#c88f72" stroke-width="3" opacity="0.40"/>
+
+  <!-- Translucent silicone cap -->
+  <path d="M172 542 C126 474 127 365 173 285 C223 196 354 151 467 207 C564 254 610 366 568 474 C547 528 505 578 452 612" fill="none" stroke="#c7d2d9" stroke-width="48" stroke-linecap="round" stroke-linejoin="round" opacity="0.86"/>
+  <path d="M172 542 C126 474 127 365 173 285 C223 196 354 151 467 207 C564 254 610 366 568 474 C547 528 505 578 452 612" fill="none" stroke="#f8fafc" stroke-width="29" stroke-linecap="round" stroke-linejoin="round" opacity="0.86"/>
+
+  <!-- Pressure sensor on the inner/palmar contact pad -->
+  <rect x="286" y="481" width="188" height="72" rx="9" fill="#1f2937" stroke="#0f172a" stroke-width="4"/>
+  <rect x="302" y="497" width="156" height="40" rx="5" fill="#111827"/>
+  <text class="sensor-label" x="380" y="523" text-anchor="middle">PRESSURE SENSOR</text>
+
+  <!-- Flex tail -->
+  <path d="M475 517 H530 C574 517 603 489 603 448 V380" fill="none" stroke="#d69b22" stroke-width="28" stroke-linecap="round"/>
+  <path d="M475 517 H530 C574 517 603 489 603 448 V380" fill="none" stroke="#f2c14f" stroke-width="11" stroke-linecap="round"/>
+  <path d="M603 380 C643 371 678 350 711 314" fill="none" stroke="#2563eb" stroke-width="7"/>
+  <path d="M603 380 C648 388 686 410 723 438" fill="none" stroke="#16a34a" stroke-width="7"/>
+  <path d="M603 380 C649 399 692 434 736 476" fill="none" stroke="#ef4444" stroke-width="7"/>
+
+  <!-- Callouts -->
+  <circle cx="825" cy="245" r="22" fill="#089fbd"/>
+  <text x="825" y="253" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="#ffffff">1</text>
+  <text class="heading" x="862" y="244">Silicone cap</text>
+  <text class="body" x="862" y="276">Covers the fingertip.</text>
+  <path class="leader" d="M806 257 H698 L559 317"/>
+
+  <circle cx="825" cy="384" r="22" fill="#089fbd"/>
+  <text x="825" y="392" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="#ffffff">2</text>
+  <text class="heading" x="862" y="383">Pressure sensor</text>
+  <text class="body" x="862" y="415">Placed on the inner fingertip pad.</text>
+  <path class="leader" d="M806 397 H623 L474 518"/>
+
+  <circle cx="825" cy="523" r="22" fill="#089fbd"/>
+  <text x="825" y="531" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="#ffffff">3</text>
+  <text class="heading" x="862" y="522">Flex tail</text>
+  <text class="body" x="862" y="554">Routes signals to the controller.</text>
+  <path class="leader" d="M806 536 H652 L603 449"/>
+
+  <text x="380" y="690" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#475569">Inner/palmar contact surface</text>
+</svg>

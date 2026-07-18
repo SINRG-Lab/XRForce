@@ -972,21 +972,8 @@ MonoBehaviour:
   forceMode: 5
   applyContinuously: 1
   receiver: {fileID: 1442004004}
-  useAdvancedProcessing: 1
   leftSource: 1
   rightSource: 1
-  useWeightedForce: 1
-  weightedForcePower: 2
-  calibrateOnStart: 1
-  calibrationDuration: 0.5
-  subtractBaseline: 1
-  baselineLeft: 0
-  baselineRight: 0
-  startThreshold: 0.15
-  stopThreshold: 0.08
-  smoothingTime: 0.08
-  maxAppliedForce: 2.5
-  maxRiseRatePerSecond: 8
   driveMode: 0
   proxyDistancePerForce: 0.01
   maxProxyOffset: 0.03
@@ -1707,6 +1694,9 @@ MonoBehaviour:
   logOnlyNewPackets: 1
   logHz: 20
   flushEveryRows: 20
+  idealPressureA: 0.15
+  idealPressureB: 0.15
+  pressureTolerance: 0.05
 --- !u!1 &479664416
 GameObject:
   m_ObjectHideFlags: 0
@@ -4677,6 +4667,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReceiverLatest
   listenPort: 3333
+  announceToEsp: 1
+  espDiscoveryPort: 13333
+  announceIntervalSeconds: 0.25
+  announceDurationSeconds: 10
+  announcePayload: XRForce
   channels: []
   channelCount: 0
   heatmapA:
@@ -4704,6 +4699,11 @@ MonoBehaviour:
   lastSender: 
   lastPacketAgeSec: 999
   packetSequence: 0
+  receivedPacketSequence: 0
+  receivedPacketsPerSecond: 0
+  packetsSkippedBeforeConsume: 0
+  logReceiveStats: 0
+  logReceiveStatsInterval: 1
 --- !u!4 &1442004005
 Transform:
   m_ObjectHideFlags: 0
@@ -5940,6 +5940,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.022
       objectReference: {fileID: 0}
+    - target: {fileID: 5990382106174212372, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6657543939151725572, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5979,6 +5983,10 @@ PrefabInstance:
     - target: {fileID: 7900952560601136727, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: StartTimer
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004453116659836026, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9037255180011632615, guid: 2211a5c95540f42278c497d3f26ab1ee, type: 3}
       propertyPath: m_LocalPosition.x
